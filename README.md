@@ -10,3 +10,5 @@
 - Dessins, brouillons, tests UI/ UX
 - Prototype fonctionnel
 - Retour d'expérience ou réflexion
+
+- https://developer.themoviedb.org/reference/intro/getting-started
