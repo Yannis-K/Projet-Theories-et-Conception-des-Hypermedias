@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang>
+<head>
+    <meta charset="UTF-8">
+    <title>Omeka S avec D3.js</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        #testAPI {
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .data-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+
+        .data-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .data-description {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .data-format {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Items Omeka S</h1>
+    <div id="testAPI"></div>
+    <script>
+        function traitement(data) {
+            if (data && Array.isArray(data)) {
+                // Sélection de la div principal
+                const mainDiv = d3.select("#testAPI");
+
+                // Création d'une div pour chaque élément JSON
+                const dataItems = mainDiv
+                    .selectAll(".data-item")
+                    .data(data)
+                    .enter()
+                    .append("div")
+                    .attr("class", "data-item");
+
+                // Vérification si l'objet a la clé "dcterms:title" avec la valeur "@value"
+                dataItems.each(function (item) {
+                    const currentItem = d3.select(this);
+
+                    if (item['dcterms:title'] && item['dcterms:title'][0]['@value']) {
+                        currentItem
+                            .append("div")
+                            .attr("class", "data-titre")
+                            .text("Titre : " + item['dcterms:title'][0]['@value']);
+                    }
+
+                    if (item['dcterms:description'] && item['dcterms:description'][0]['@value']) {
+                        currentItem
+                            .append("div")
+                            .attr("class", "data-description")
+                            .text("Description : " + item['dcterms:description'][0]['@value']);
+                    }
+
+                    if (item['dcterms:format'] && item['dcterms:format'][0]['@value']) {
+                        currentItem
+                            .append("div")
+                            .attr("class", "data-format")
+                            .text("Format : " + item['dcterms:format'][0]['@value']);
+                    }
+                });
+            }
+        }
+        
+        //http://localhost/omeka-s/api/items
+        //Récuperation des données de l'API avec le callback sur la fonction traitement
+        const url = "http://localhost:80/omeka-s/api/items?callback=traitement";
+        const script = document.createElement("script");
+        script.src = url;
+
+        
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
