@@ -9,7 +9,7 @@
 @prefix ma: <http://www.w3.org/ns/ma-ont#>.
 
 <https://movie.univ-paris8.fr/onto/mov#> a owl:Ontology ;
-    dcterms:title "Jardin des connaissances" .
+    dcterms:title "Ressources sur les utilisateurs" .
 
 mov:user a rdfs:Class ;
     rdfs:label "user" ;
