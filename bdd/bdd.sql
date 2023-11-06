@@ -11,16 +11,18 @@ CREATE TABLE `user_movie_relation` (
   `user_id` int NOT NULL,
   `movie_api_id` int NOT NULL,
   `rating` int,
-  `favourite` tinyint NOT NULL DEFAULT "0",
-  `Foreign` user_id
+  `favourite` tinyint NOT NULL DEFAULT "0"
 );
 
 CREATE TABLE `user_form_logs` (
   `log_id` int PRIMARY KEY AUTO_INCREMENT,
+  `user_id` int NOT NULL,
   `submission_date` datetime NOT NULL,
   `humor` enum,
   `location` varchar(255),
   `weather` varchar(255)
 );
 
-ALTER TABLE `user_movie_relation` ADD FOREIGN KEY (`Foreign`) REFERENCES `user` (`id`);
+ALTER TABLE `user_movie_relation` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+ALTER TABLE `user_form_logs` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
