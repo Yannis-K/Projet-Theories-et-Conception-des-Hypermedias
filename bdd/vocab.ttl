@@ -1,0 +1,98 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix o: <http://omeka.org/s/vocabs/o#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mov: <https://movie.univ-paris8.fr/onto/mov#> .
+@prefix ma: <http://www.w3.org/ns/ma-ont#>.
+
+<https://movie.univ-paris8.fr/onto/mov#> a owl:Ontology ;
+    dcterms:title "Jardin des connaissances" .
+
+mov:user a rdfs:Class ;
+    rdfs:label "user" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+
+mov:username a rdf:Property ;
+    rdfs:label "username" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov:email a rdf:Property ;
+    rdfs:label "email" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov:genre a rdf:Property ;
+    rdfs:label "genre" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:password a rdf:Property ;
+    rdfs:label "password" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .   
+
+mov:user_movie_relation a rdfs:Class ;
+    rdfs:label "user_movie_relation" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov:user_id a rdf:Property ;
+    rdfs:label "user_id" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:movie_api_id a rdf:Property ;
+    rdfs:label "movie_api_id" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:rating a rdf:Property ;
+    rdfs:label "rating" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:favourite a rdf:Property ;
+    rdfs:label "favourite" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:user_form_logs a rdfs:Class ;
+    rdfs:label "user_form_logs" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov:user_id a rdf:Property ;
+    rdfs:label "user_id" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:submission_date a rdf:Property ;
+    rdfs:label "submission_date" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:humor a rdf:Property ;
+    rdfs:label "humor" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:location a rdf:Property ;
+    rdfs:label "location" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:weather a rdf:Property ;
+    rdfs:label "weather" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+    
+            
+
+
