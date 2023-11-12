@@ -9,14 +9,8 @@ CREATE TABLE `user_movie_relation` (
   `user_id` int NOT NULL,
   `movie_id` int NOT NULL,
   `movie_is_from_API` tinyint(1) NOT NULL DEFAULT "0",
-  `rating` int,
+  `rating` tinyint,
   `favourite` tinyint(1) NOT NULL DEFAULT "0",
-  `user_humor` enum,
-  `user_location_lat` DECIMAL(10, 8),
-  `user_location_long` DECIMAL(11, 8),
-  `user_location_weather_label` enum,
-  `user_location_weather_temperature` int,
-  `form_submission_date` datetime,
   `rating_timestamp` datetime
 );
 
@@ -32,8 +26,21 @@ CREATE TABLE `API_ref` (
   `label` varchar(50)
 );
 
+CREATE TABLE `user_recommendation_form_logs` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `user_humor` enum,
+  `user_location_lat` DECIMAL(10, 8),
+  `user_location_long` DECIMAL(11, 8),
+  `user_location_weather_label` enum,
+  `user_location_weather_temperature` int,
+  `form_submission_date` datetime
+);
+
 ALTER TABLE `user_movie_relation` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 ALTER TABLE `user_movie_relation` ADD FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`);
 
 ALTER TABLE `user_movie_relation` ADD FOREIGN KEY (`movie_id`) REFERENCES `API_ref` (`id`);
+
+ALTER TABLE `user_recommendation_form_logs` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
