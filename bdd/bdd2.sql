@@ -13,9 +13,10 @@ CREATE TABLE `user_movie_relation` (
   `favourite` tinyint(1) NOT NULL DEFAULT "0",
   `user_humor` enum,
   `user_location` varchar(255),
-  `user_location_weather` varchar(255),
-  `form_submission_date` datetime NOT NULL,
-  `rating_timestamp` datetime NOT NULL
+  `user_location_weather_label` enum,
+  `user_location_weather_temperature` int,
+  `form_submission_date` datetime,
+  `rating_timestamp` datetime
 );
 
 CREATE TABLE `movie` (
@@ -33,3 +34,5 @@ CREATE TABLE `API_ref` (
 ALTER TABLE `user_movie_relation` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 ALTER TABLE `user_movie_relation` ADD FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`);
+
+ALTER TABLE `user_movie_relation` ADD FOREIGN KEY (`movie_id`) REFERENCES `API_ref` (`id`);
