@@ -41,7 +41,16 @@
         <div id="infosProjet" class="row">
         </div>
         <div id="cardEtus" class="row row-cols-1 row-cols-md-3 g-4">
-        </div>          
+          <div id="api-links-section">
+           <!--  
+            <a href="https://site.test/omeka-s/api/items">Items</a><br>
+          <a href="https://site.test/omeka-s/api/resource_templates">Ressources</a><br>
+          <a href="https://site.test/omeka-s/api/vocabularies">Vocabularies </a>
+          -->
+          </div>
+        </div>   
+
+
       </div>
     
 
@@ -67,7 +76,17 @@
             console.log(u);
         });
 
-                            
+        let apiEndPoints = ['items', 'vocabularies', 'ressource_templates'];
+
+        const apiLinksSection = d3.select('#api-links-section');
+
+        apiEndPoints.forEach(endpoint => {
+          apiLinksSection.append('a')
+          .attr('href', `${pa.apiOmk}`+'/'+`${endpoint}`)
+          .attr('target','_blank')
+          .text(endpoint.charAt(0).toUpperCase() + endpoint.slice(1)); 
+          apiLinksSection.append('br'); 
+        });
     })
 
     function showProjet(e,d){
