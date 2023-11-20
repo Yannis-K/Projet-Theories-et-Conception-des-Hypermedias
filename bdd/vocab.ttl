@@ -9,7 +9,7 @@
 @prefix ma: <http://www.w3.org/ns/ma-ont#>.
 
 <https://movie.univ-paris8.fr/onto/mov#> a owl:Ontology ;
-    dcterms:title "Ressources sur les utilisateurs" .
+    dcterms:title "Jardin des connaissances" .
 
 mov:user a rdfs:Class ;
     rdfs:label "user" ;
@@ -22,15 +22,7 @@ mov:username a rdf:Property ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-mov:email a rdf:Property ;
-    rdfs:label "email" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .
 
-mov:genre a rdf:Property ;
-    rdfs:label "genre" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" . 
 
 mov:password a rdf:Property ;
     rdfs:label "password" ;
@@ -47,8 +39,8 @@ mov:user_id a rdf:Property ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov:movie_api_id a rdf:Property ;
-    rdfs:label "movie_api_id" ;
+mov:movie_id a rdf:Property ;
+    rdfs:label "movie_id" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
@@ -91,6 +83,24 @@ mov:weather a rdf:Property ;
     rdfs:label "weather" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
+
+
+mov:API_ref a rdfs:Class ;
+    rdfs:label "Api_ref" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov:url a rdf:Property ;
+    rdfs:label "url" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:label a rdf:Property ;
+    rdfs:label "label" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+
 
     
             
