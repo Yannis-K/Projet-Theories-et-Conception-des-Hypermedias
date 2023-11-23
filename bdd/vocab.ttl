@@ -16,18 +16,20 @@ mov:user a rdfs:Class ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-
 mov:username a rdf:Property ;
     rdfs:label "username" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
-
-
-
+    
 mov:password a rdf:Property ;
     rdfs:label "password" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .   
+
+
+
+
+
 
 mov:user_movie_relation a rdfs:Class ;
     rdfs:label "user_movie_relation" ;
@@ -54,8 +56,26 @@ mov:favourite a rdf:Property ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov:user_form_logs a rdfs:Class ;
-    rdfs:label "user_form_logs" ;
+mov:movie_is_from_API a rdf:Property ;
+    rdfs:label "movie_is_from_API" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov:rating_timestamp a rdf:Property ;
+    rdfs:label "rating_timestamp" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .     
+
+
+
+
+
+
+
+
+
+mov:user_recommendation_form_logs a rdfs:Class ;
+    rdfs:label "user_recommendation_form_logs" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
@@ -79,10 +99,29 @@ mov:location a rdf:Property ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
+mov:location a rdf:Property ;
+    rdfs:label "location" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .     
+
 mov:weather a rdf:Property ;
     rdfs:label "weather" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 mov:API_ref a rdfs:Class ;

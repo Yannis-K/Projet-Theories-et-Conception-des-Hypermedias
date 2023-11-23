@@ -1,0 +1,99 @@
+:root {
+  --main-color: #AE445A;
+  --link-color: #F39F5A;
+  --dark-color-1: #662549;
+  --dark-color-2: #451952;
+  --text-color-1: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Crimson Pro', serif!important;
+  background-color: var(--main-color) !important;
+  color: var(--text-color-1)!important;
+}
+
+.center-screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home-page, .login-page, .register-page {
+  min-width: 700px !important;
+  font-weight: 500 !important;
+
+}
+
+.home-page h1, .login-page h1, .register-page h1 {
+  font-weight: 600 !important;
+}
+
+.orange-custom-btn {
+  color: var(--text-color-1) !important;
+  background-color: var(--link-color) !important;
+  border-radius: 1rem !important;
+}
+
+.white-custom-btn {
+  color: var(--link-color) !important;
+  background-color: white !important;
+  border-radius: 1rem !important;
+}
+
+.width-min-150 {
+  min-width: 150px;
+}
+
+.custom-form-input-1 {
+  width: 90% !important;
+  background-color: white !important;
+  border-radius: 1rem !important;
+}
+
+.dashboard-bottom-nav {
+  background-color: var(--main-color)!important;
+}
+
+.dashboard-nav, 
+.dashboard-nav .container-fluid{
+  background-color: var(--dark-color-1)!important;
+  width: 100%!important;
+
+}
+
+.dashboard-nav{
+  padding-left:55px;
+  padding-right:55px;
+  height: 80px;
+}
+
+.dashboard-logo {
+
+}
+
+.account-txt-btn {
+  color: var(--link-color)!important;
+
+}
+
+.account-txt-btn:hover {
+  cursor: pointer;
+}
+
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .home-page, .login-page, .register-page {
+      min-width: auto !important;
+  }
+
+  .custom-form-input-1 {
+      width: 100% !important;
+  }
+}
+
+/* Add more media queries as needed */

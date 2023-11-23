@@ -1,176 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THYP 23-24 projets</title>
-    <script src="assets/js/d3.v7.min.js" ></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stat Omeka S</title>
+    <!-- D3 -->
+    <script src="assets/js/d3.v7.min.js"></script>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Font Awesome -->
+    <script src="assets/js/all.min.js"></script>
+    <link href="assets/css/all.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav id="navbarMain" class="navbar navbar-expand-lg bg-body-tertiary"></nav>
 
-    <script src="assets/js/all.min.js" ></script>
-    <link href="assets/css/all.min.css" rel="stylesheet" >
-
-</head>
-<body>
-    <nav id="navbarMain" class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">THYP 23-23 : Projets</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Liste des projets
-                </a>
-                <ul id="ddProjets" class="dropdown-menu">
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
-
-      <div class="container">
-        <div id="infosProjet" class="row">
-        </div>
-        <div id="cardEtus" class="row row-cols-1 row-cols-md-3 g-4">
-          <div id="api-links-section">
-           <!--  
+    <div class="container">
+      <div id="infosProjet" class="row"></div>
+      <div id="cardEtus" class="row row-cols-1 row-cols-md-3 g-4">
+        <div id="api-links-section">
+          <!--  
             <a href="https://site.test/omeka-s/api/items">Items</a><br>
           <a href="https://site.test/omeka-s/api/resource_templates">Ressources</a><br>
           <a href="https://site.test/omeka-s/api/vocabularies">Vocabularies </a>
           -->
-          </div>
-        </div>   
-
-
+        </div>
       </div>
-    
+    </div>
 
-   <script type="module">
-    import {auth} from './modules/auth.js';
-    import {pa} from './modules/authParams.js';
+    <script type="module">
+      // modules
+      import { auth } from "./modules/auth.js"; // authentification API omeka
+      import { pa } from "./modules/authParams.js"; // paramètres d'authentification
+      /*
+            let urlEtu =
+                "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKaeTMzC3pzvVgSUs6pnN0fS5tckz-x2SsHw4Uj0-0YXr7MQ5VEC0voCVPhi5-Mdv9Xz-oczoRyDc4/pub?output=csv",
+              urlProj =
+                "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7ig4_uHNJuq1cHL9_34G-Z47uIKSyeM0Lyiw05V4hFzjcOL4tLEEKBIM7Az_bwJpdIXkPKsCC7IAC/pub?gid=1915481990&single=true&output=csv",
 
-    let urlEtu = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKaeTMzC3pzvVgSUs6pnN0fS5tckz-x2SsHw4Uj0-0YXr7MQ5VEC0voCVPhi5-Mdv9Xz-oczoRyDc4/pub?output=csv",
-        urlProj = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7ig4_uHNJuq1cHL9_34G-Z47uIKSyeM0Lyiw05V4hFzjcOL4tLEEKBIM7Az_bwJpdIXkPKsCC7IAC/pub?gid=1915481990&single=true&output=csv",
-        a;
+      */
 
-    Promise.all([d3.csv(urlEtu),d3.csv(urlProj)]).then(responses=>{
-        console.log(responses);
-        a = new auth(pa);
-        //création des items ddProjets
-        d3.select('#ddProjets').selectAll('li').data(responses[1]).enter()
-            .append('li')
-                .append('a').attr('class',"dropdown-item")
-                            .attr('href',"#")
-                            .text(d=>d['Titre du projet'])
-                            .on('click',showProjet);
-        a.getUser(u=>{
-            console.log(u);
-        });
+      // authentification....
+      let a = new auth(pa);
 
-        let apiEndPoints = ['items', 'vocabularies', 'ressource_templates'];
+      a.getUser((u) => {
+        console.log(u);
+      });
 
-        const apiLinksSection = d3.select('#api-links-section');
+      /*
+        TEST API omeka
+      */
+      console.log("GET instance omk", a.omk);
+      // GET
+      console.log("GET ALL items", a.omk.getAllItems());
+      console.log("GET item by id", a.omk.getItem(1));
+      //a.omk.getRT();
+      console.log("Ressources templates", a.omk.rts);
+      console.log("GET RT ID by label", a.omk.getRtId("Base Resource"));
+      a.omk.getProps();
+      console.log("GET props", a.omk.props);
+      console.log("GET props by ID", a.omk.getPropId("dcterms:contributor"));
+      a.omk.getClass();
+      console.log("GET class", a.omk.class);
+      console.log(
+        "GET class by name",
+        a.omk.getClassByName("Online Chat Account")
+      );
+      //console.log("GET random item by class", a.omk.getRandomItemByClass(105));
 
-        apiEndPoints.forEach(endpoint => {
-          apiLinksSection.append('a')
-          .attr('href', `${pa.apiOmk}`+'/'+`${endpoint}`)
-          .attr('target','_blank')
-          .text(endpoint.charAt(0).toUpperCase() + endpoint.slice(1)); 
-          apiLinksSection.append('br'); 
-        });
-    })
+      //....
+      console.log("GET instance omk", a.omk);
+      // POST
 
-    function showProjet(e,d){
-        console.log(d);        
-        let gh = new URL(d['Adresse du repository github']).pathname.split('/');
-        Promise.all([fetchRepoInfo(gh[1],gh[2]),fetchRepoContributors(gh[1],gh[2])]).then(rs=>{
-            console.log(rs);
-            let cts = rs[1].data ? rs[1].data : rs[0].data.owner;
-            showRepo(d, rs[0], gh);
-            showContributors(cts);
-        });         
-    }
-    function showRepo(projet, repo, gh){
-        d3.select('#infosProjet').selectAll('div').remove();
-        let contG = d3.select('#infosProjet').append('div').attr('class','col');
-        contG.append('h1').text(projet['Titre du projet']);
-        contG.append('p').text(projet['Description du projet']);
-        contG.append('a')
-            .attr('href',projet['Adresse du repository github'])
-            .attr('target',"_blanck")
-            .text(projet['Adresse du repository github']);
-        let contD = d3.select('#infosProjet').append('div').attr('class','col');
-        contD.append('h4').text('Liste des travaux');
-        let listeTravaux = [
-        {'label':'Image du diagramme','path': '/bdd/bdd.svg'},
-        {'label':'Script de création de la base','path': '/bdd/bdd.sql'},
-        {'label':'Vocabulaire du projet','path': '/bdd/vocab.ttl'},
-        {'label':'Ressource template','path': '/bdd/rt/'}
-       ],
-        ulTravaux = contD.append('ul');
-        ulTravaux.selectAll('li').data(listeTravaux).enter().append('li')
-            .append('a')
-                .attr('href',d=>'https://'+gh[1]+'.github.io/'+gh[2]+d.path)
-                .attr('target',"_blanck")
-                .text(d=>d.label);
-    }
+      let firstItem = a.omk.getItem(1);
 
-    function showContributors(contributors){
-        //supression des anciens contributeurs
-        d3.select('#cardEtus').selectAll('div').remove();
-        //création des carte de contributeurs
-        let cards = d3.select('#cardEtus').selectAll('div').data(contributors).enter()
-            .append('div').attr('class',"col")
-                .append('div').attr('class',"card h-100");
-        //ajout de l'image
-        cards.append('img').attr('src',d=>d.avatar_url).attr('class',"card-img-top");
-        //ajout du body
-        let body = cards.append('div').attr('class',"card-body");
-        body.append('h5').attr('class',"card-title").text(d=>d.login);
-        body.append('p').attr('class',"card-text").text(d=>"description du projet");
-        //ajout du footer
-        cards.append('div').attr('class',"card-footer")
-            .append('small').attr('class','text-body-secondary').text('lien vers le projet');
-    }
+      a.omk.createRessource(
+        {
+          "o:title": "Titre de l'item",
+          "o:description": "Description de l'item",
+        },
 
-    /*usage de l'api github :https://docs.github.com/fr/rest/repos/contents?apiVersion=2022-11-28
-    avec octokit : https://github.com/octokit/octokit.js
-    */
+        // callback
+        (response) => {
+          console.log("Réponse de la création de l'item :", response);
+          /*
+          if (response && response.status === "success") {
+            console.log("L'item a été inséré avec succès.");
+          } else {
+            console.error("Erreur lors de l'insertion de l'item :", response);
+          }
+          */
+        },
+        "items"
+      );
 
-    async function fetchRepoInfo(owner,repo) {
-        const prs = await a.octo.rest.repos.get({
-                owner,
-                repo,
-            });
-        return prs;
-    } 
+      let apiEndPoints = ["items", "vocabularies", "resource_templates"];
 
-    async function fetchRepoContributors(owner,repo) {
-        const ctbs = await a.octo.rest.repos.listContributors({
-            owner,
-            repo
-        });
-        return ctbs;
-    }        
+      const apiLinksSection = d3.select("#api-links-section");
 
-        /*
-octokit.rest.repos.downloadArchive({
-  owner,
-  repo,
-  ref,
-});
-        */
+      apiLinksSection.append("h1").text("APIs");
 
+      // Ajouter des liens pour chaque template de ressource
+      apiEndPoints.forEach((endpoint) => {
+        apiLinksSection
+          .append("a")
+          .attr("href", `${pa.apiOmk}/${endpoint}`)
+          .attr("target", "_blank")
+          .text(endpoint.charAt(0).toUpperCase() + endpoint.slice(1));
 
-   </script>
-</body>
+        apiLinksSection.append("br");
+
+        // ...
+      });
+      apiLinksSection.append("br");
+      apiLinksSection.append("h1").text("Resource templates");
+
+      fetch(`${pa.apiOmk}/resource_templates`)
+        .then((response) => response.json())
+        .then((resourceTemplates) => {
+          const resourceTemplatesSection = d3.select("#api-links-section");
+
+          // Parcourir chaque template de ressource et ajouter un lien
+          resourceTemplates.forEach((template) => {
+            const templateLink = resourceTemplatesSection
+              .append("a")
+              .attr("href", template["@id"])
+              .attr("target", "_blank")
+              .text(`${template["o:label"]}`);
+
+            resourceTemplatesSection.append("br");
+          });
+        })
+        .catch((error) =>
+          console.error(
+            "Erreur lors de la récupération des templates de ressources",
+            error
+          )
+        );
+    </script>
+  </body>
 </html>
