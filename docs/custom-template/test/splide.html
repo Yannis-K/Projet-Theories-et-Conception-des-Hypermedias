@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Link to the Glider.js CDN for CSS -->
+    <link
+      rel="stylesheet"
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.8/glider.css"
+      integrity="sha512-xcz2kgNDovRs9/wYWii2XSBEDlpaTq99iewiGN3PR/pNnPaSDiw6wHpXU0kFyonevdVj/MkeesxMII8sgolFCQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    />
+  </head>
+  <body>
+    <!--- Splide JS script --->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <!--- Splide JS autoscroll --->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+    <script>
+      // Splide : Team
+
+      function splideTeam() {
+        // Cible le composant grâce à ses classes
+        let splides = $(".splide.is-team");
+        for (let i = 0, splideLength = splides.length; i < splideLength; i++) {
+          // Ouvre les paramètres du slider
+          new Splide(splides[i], {
+            // Personnalisez les options souhaitées ici
+            type: "loop",
+            gap: "1rem",
+            autoWidth: true,
+            arrows: false,
+            pagination: false,
+            drag: true,
+            autoScroll: {
+              speed: 2,
+            },
+          }).mount(window.splide.Extensions);
+        }
+      }
+      splideTeam();
+    </script>
+  </body>
+</html>

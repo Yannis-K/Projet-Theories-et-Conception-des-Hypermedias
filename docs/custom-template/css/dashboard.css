@@ -1,0 +1,211 @@
+:root {
+  --main-color: #AE445A;
+  --link-color: #F39F5A;
+  --dark-color-1: #662549;
+  --dark-color-2: #451952;
+  --text-color-1: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Crimson Pro', serif!important;
+  background-color: var(--main-color) !important;
+  color: var(--text-color-1)!important;
+}
+
+.center-screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.orange-custom-btn {
+  color: var(--text-color-1) !important;
+  background-color: var(--link-color) !important;
+  border-radius: 1rem !important;
+}
+
+.white-custom-btn {
+  color: var(--link-color) !important;
+  background-color: white !important;
+  border-radius: 1rem !important;
+}
+
+.width-min-150 {
+  min-width: 150px;
+}
+
+.custom-form-input-1 {
+  width: 90% !important;
+  background-color: white !important;
+  border-radius: 1rem !important;
+}
+
+.dashboard-bottom-nav {
+
+  height: 70px;
+  background-color: var(--dark-color-1)!important;
+  padding-left: 55px!important;
+  padding-right: 55px!important;
+}
+
+.dashboard-nav, 
+.dashboard-nav .container-fluid{
+  background-color: var(--dark-color-1)!important;
+  width: 100%!important;
+
+}
+
+.dashboard-nav{
+  padding-left:55px;
+  padding-right:55px;
+  height: 70px;
+}
+
+.dashboard-logo {
+  color: white;
+}
+
+.dashboard-page{
+    /*min-height: 850px;*/
+}
+
+.account-txt-btn {
+  color: var(--link-color)!important;
+
+}
+
+.account-txt-btn:hover {
+  cursor: pointer;
+}
+
+
+.media-set-wrapper {
+  position: relative;
+}
+
+.media-set-container {
+  display: grid;
+  grid-template-columns: repeat(4, 100%);
+  gap: 0.5rem;
+  /*overflow-x: scroll;*/
+  overflow: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.media-set {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  scroll-snap-align: start;
+
+  &:first-child:hover > a {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  > a {
+    z-index: 1; /* or a higher value if needed */
+
+    transition: all .3s ease;
+    pointer-events: auto;
+    display: flex;
+    opacity: 1; /* or adjust as needed */
+    visibility: visible; /* or adjust as needed */
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 2rem;
+
+    &.link-next {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  &:hover > a {
+    opacity: 1;
+    transform: scale(2);
+  }
+  
+  /*
+  &:target > a {
+    pointer-events: auto;
+  }
+  */
+}
+
+.media-item {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 0.2rem;
+
+  > img {
+    width: 100%;
+    object-fit: scale-down;
+  }
+}
+
+.media-item:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+  }
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .home-page, .login-page, .register-page {
+      min-width: auto !important;
+  }
+
+  .custom-form-input-1 {
+      width: 100% !important;
+  }
+}
+
+/* Add more media queries as needed */
+.media-set {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    scroll-snap-align: start;
+    position: relative; /* Add relative positioning to the container */
+  
+    &:first-child:hover > a {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  
+    > a {
+      /* ... Your existing styles ... */
+  
+      &.link-next {
+        left: auto;
+        right: 0;
+      }
+    }
+  
+    &:hover > a {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+  
+    /* Remove the &:target selector */
+  
+    /* Add a specific class for the active set */
+    &.active > a {
+      pointer-events: auto;
+    }
+  }
+  
