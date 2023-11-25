@@ -53,26 +53,6 @@ body {
   border-radius: 1rem !important;
 }
 
-.dashboard-bottom-nav {
-  background-color: var(--main-color)!important;
-}
-
-.dashboard-nav, 
-.dashboard-nav .container-fluid{
-  background-color: var(--dark-color-1)!important;
-  width: 100%!important;
-
-}
-
-.dashboard-nav{
-  padding-left:55px;
-  padding-right:55px;
-  height: 80px;
-}
-
-.dashboard-logo {
-
-}
 
 .account-txt-btn {
   color: var(--link-color)!important;
@@ -81,6 +61,9 @@ body {
 
 .account-txt-btn:hover {
   cursor: pointer;
+}
+.splide {
+  padding: 20px 0;
 }
 
 
