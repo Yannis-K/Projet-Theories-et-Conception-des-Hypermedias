@@ -5,91 +5,71 @@
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix o: <http://omeka.org/s/vocabs/o#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix mov: <https://movie.univ-paris8.fr/onto/mov#> .
+@prefix mov2: <https://movie2.univ-paris8.fr/onto/mov2#> .
 @prefix ma: <http://www.w3.org/ns/ma-ont#>.
 
-<https://movie.univ-paris8.fr/onto/mov#> a owl:Ontology ;
-    dcterms:title "Jardin des connaissances" .
+<https://movie2.univ-paris8.fr/onto/mov2#> a owl:Ontology ;
+    dcterms:title "Jardin des connaissances2" .
 
-mov:user a rdfs:Class ;
+mov2:user a rdfs:Class ;
     rdfs:label "user" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
+
 
 mov:username a rdf:Property ;
     rdfs:label "username" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
-    
+
+
+
 mov:password a rdf:Property ;
     rdfs:label "password" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .   
-
-
-
-
-
 
 mov:user_movie_relation a rdfs:Class ;
     rdfs:label "user_movie_relation" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-mov:user_id a rdf:Property ;
+mov2:user_id a rdf:Property ;
     rdfs:label "user_id" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov:movie_id a rdf:Property ;
+mov2:movie_id a rdf:Property ;
     rdfs:label "movie_id" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov:rating a rdf:Property ;
+mov2:rating a rdf:Property ;
     rdfs:label "rating" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov:favourite a rdf:Property ;
+mov2:favourite a rdf:Property ;
     rdfs:label "favourite" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov:movie_is_from_API a rdf:Property ;
-    rdfs:label "movie_is_from_API" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" . 
-
-mov:rating_timestamp a rdf:Property ;
-    rdfs:label "rating_timestamp" ;
-    rdfs:domain o:Resource ;
-    vs:term_status "experimental" .     
-
-
-
-
-
-
-
-
-
-mov:user_recommendation_form_logs a rdfs:Class ;
-    rdfs:label "user_recommendation_form_logs" ;
+mov:user_form_logs a rdfs:Class ;
+    rdfs:label "user_form_logs" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-mov:user_id a rdf:Property ;
+mov2:user_id a rdf:Property ;
     rdfs:label "user_id" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov:submission_date a rdf:Property ;
+mov2:submission_date a rdf:Property ;
     rdfs:label "submission_date" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov:humor a rdf:Property ;
+mov2:humor a rdf:Property ;
     rdfs:label "humor" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
@@ -97,14 +77,9 @@ mov:humor a rdf:Property ;
 mov:location a rdf:Property ;
     rdfs:label "location" ;
     rdfs:domain o:Resource ;
-    vs:term_status "experimental" . 
-
-mov:location a rdf:Property ;
-    rdfs:label "location" ;
-    rdfs:domain o:Resource ;
     vs:term_status "experimental" .     
 
-mov:weather a rdf:Property ;
+mov2:weather a rdf:Property ;
     rdfs:label "weather" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
@@ -124,17 +99,17 @@ mov:weather a rdf:Property ;
 
 
 
-mov:API_ref a rdfs:Class ;
+mov2:API_ref a rdfs:Class ;
     rdfs:label "Api_ref" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-mov:url a rdf:Property ;
+mov2:url a rdf:Property ;
     rdfs:label "url" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov:label a rdf:Property ;
+mov2:label a rdf:Property ;
     rdfs:label "label" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
