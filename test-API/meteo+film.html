@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        
+            <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f6f6f6;
+        }
+
+        #testAPI {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;  
+        }
+
+        #testAPI div {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    </head>
+    <body>
+        <div id="testApiMeteo">
+        </div>
+        <div id="testApiGenre">
+        </div>
+        <div id="testApiFilm">
+        </div>
+
+        <script>
+            
+            function findWeather(cond){
+                
+                if(cond == "Ensoleillé"){
+                    return "Ensoleillé";
+                }else if(cond == "Partiellement nuageux" || 
+                cond == "Nuageux" ||
+                cond == "Couvert"){
+                    return "Nuageux";
+                 }else if(cond == "Brouillard" || 
+                cond == "Brouillard givrant" ||
+                cond == "Brume"){
+                    return "Brouillard";
+                 }/*else if(cond == "" || 
+                cond == "Averses de neige modérées à fortes" ||
+                cond == "Neige éparse à proximité" ||
+                cond == "Grésil épars à proximité" ||
+                cond == "Légères averses de neige" ||
+                cond == "Légères averses de grésil" ||
+                cond == "Averses de grésil modérées à fortes" ||
+                cond == "Crystaux de glace" ||
+                cond == "Légères averses de crystaux de glace" ||
+                cond == "Neige forte" ||
+                cond == "Neige forte éparse" ||
+                cond == "Neige modérée" ||
+                cond == "Neige modérée éparse" ||
+                cond == "Neige légère" ||
+                cond == "Grésil modéré à fort" ||
+                cond == "Léger grésil" || 
+                cond == "Neige légère éparse" ||
+                cond == "Forte bruine verglaçante" ||
+                cond == "Bruine verglaçante" ||
+                cond == "Bruine légère éparse" ||
+                cond == "Rafales de neige" ||
+                cond == "Blizzard" ||
+                cond == ""){
+                    return "Neige";
+                 }*/else if(cond == "Neige éparse modérée à forte avec tonnerre par endroit" || 
+                cond == "Légère neige éparse avec tonnerre par endroit" ||
+                cond == "Pluie forte à modérée avec tonerre par endroit" ||
+                cond == "Légère pluie éparse avec tonnerre par endroit" ||
+                cond == "Foyers orageux à proximité" ){
+                    return "Tonerre";
+                 }else if(cond == "Bruine verglaçante éparse à proximité" || 
+                cond == "Pluie éparse à proximité" ||
+                cond == "Averses de crystaux de glace modérées à fortes" ||
+                cond == "Averse de pluie modérée" ||
+                cond == "Averses de pluie torrentielle" ||
+                cond == "Averse de pluie légère" ||
+                cond == "Pluie verglaçante modérée à forte" ||
+                cond == "Pluie verglaçante légère" ||
+                cond == "Pluie forte" ||
+                cond == "Pluie forte par moments" ||
+                cond == "Pluie modérée" ||
+                cond == "Pluie modérée par moments" ||
+                cond == "Pluie légère" ||
+                cond == "Pluie légère éparse" ||
+                cond == ""){
+                    return "Pluie";
+                 }
+                 return "Neige";
+            }
+
+
+
+
+            function findGenre(condition, temperature, humor){
+                condi = findWeather(condition);
+                if(condi == "Ensoleillé" && humor == "Happy"){
+                    if(temperature <= 17){
+                        return 35; // Comédie
+                    }
+                    return 10402; // Musique
+                } else if(condi == "Ensoleillé" && humor == "Neutral"){
+                    return 16; //Animation
+                }else if(condi == "Ensoleillé" && humor == "Sad"){
+                    return 99 //Documentaire
+                }else if(condi == "Nuageux" && humor == "Happy"){
+                    return 53; //Thriller
+                }else if(condi == "Nuageux" && humor == "Neutral"){
+                    return 10770; //Téléfilm
+                }else if(condi == "Nuageux" && humor == "Sad"){
+                    return 37 //Western
+                }else if(condi == "Brouillard" && humor == "Happy"){
+                    return 12; //Aventure
+                }else if(condi == "Brouillard" && humor == "Neutral"){
+                    return 878; //Science-Fiction
+                }else if(condi == "Brouillard" && humor == "Sad"){
+                    return 9648 //Mystère
+                }else if(condi == "Pluie" && humor == "Happy"){
+                    return 10749 //Romance
+                }else if(condi == "Pluie" && humor == "Neutral"){
+                    return 28; //Action
+                }else if(condi == "Pluie" && humor == "Sad"){
+                    return 18; //Drame
+                }else if(condi == "Tonerre" && humor == "Happy"){
+                    return 27; //Horreur
+                }else if(condi == "Tonerre" && humor == "Neutral"){
+                    return 80; //Crime
+                }else if(condi == "Tonerre" && humor == "Sad"){
+                    return 10752 //Guerre
+                }else if(condi == "Neige" && humor == "Happy"){
+                    return 10751; //Familial
+                }else if(condi == "Neige" && humor == "Neutral"){
+                    return 14; //Fantastique 
+                }else if(condi == "Neige" && humor == "Sad"){
+                    return 36; //Histoire
+                }
+                
+            }
+            var temp
+            const apiKey = "3fe7f373b7d84791879114239232011";
+            const cityName = "paris"; // Remplacez par le nom de la ville que vous souhaitez interroger
+            
+
+            //const url2 = "https://www.weatherapi.com/docs/conditions.json";
+            const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no&lang=fr`;
+            /*conditionw_EN = ["Sunny","Partly Cloudy","Overcast","Mist","Patchy rain nearby",
+            "Patchy snow nearby","Patchy sleet nearby",	"Patchy freezing drizzle nearby",
+            "Thundery outbreaks in nearby",	"Blowing snow","Blizzard","Fog","Freezing fog",
+            "Patchy light drizzle",	"Light drizzle","Freezing drizzle","Heavy freezing drizzle",
+            "Patchy light rain","Light rain","Moderate rain at times","Moderate rain",
+            "Heavy rain at times","Heavy rain",	"Light freezing rain","Moderate or heavy freezing rain",
+            "Light sleet",	"Moderate or heavy sleet","Patchy light snow","Light snow",
+            "Patchy moderate snow","Moderate snow","Patchy heavy snow","Heavy snow","Ice pellets",
+            "Light rain shower","Moderate or heavy rain shower","Torrential rain shower","Light sleet showers",
+            "Moderate or heavy sleet showers","Light snow showers","Moderate or heavy snow showers","Light showers of ice pellets",
+            "Moderate or heavy showers of ice pellets","Patchy light rain in area with thunder","Moderate or heavy rain in area with thunder",
+            "Patchy light snow in area with thunder","Moderate or heavy snow in area with thunder"];
+            const humor = ["Happy","Neutral","Sad"];
+            var conditions_FR= ['Ensoleillé', 'Partiellement nuageux', 'Nuageux', 'Couvert', 'Brume',
+            'Pluie éparse à proximité', 'Neige éparse à proximité', 'Grésil épars à proximité', 
+            'Bruine verglaçante éparse à proximité', 'Foyers orageux à proximité', 'Rafales de neige', 
+            'Blizzard', 'Brouillard', 'Brouillard givrant', 'Bruine légère éparse', 'Bruine légère', 
+            'Bruine verglaçante', 'Forte bruine verglaçante', 'Pluie légère éparse', 'Pluie légère', 
+            'Pluie modérée par moments', 'Pluie modérée', 'Pluie forte par moments', 'Pluie forte', 
+            'Pluie verglaçante légère', 'Pluie verglaçante modérée à forte', 'Léger grésil', 'Grésil modéré à fort', 
+            'Neige légère éparse', 'Neige légère', 'Neige modérée éparse', 'Neige modérée', 'Neige forte éparse', 
+            'Neige forte', 'Crystaux de glace', 'Averse de pluie légère', 'Averse de pluie modérée', 
+            'Averses de pluie torrentielle', 'Légères averses de grésil', 'Averses de grésil modérées à fortes', 
+            'Légères averses de neige', 'Averses de neige modérées à fortes', 'Légères averses de crystaux de glace', 
+            'Averses de crystaux de glace modérées à fortes', 'Légère pluie éparse avec tonnerre par endroit', 
+            'Pluie forte à modérée avec tonerre par endroit', 'Légère neige éparse avec tonnerre par endroit', 
+            'Neige éparse modérée à forte avec tonnerre par endroit'];
+            */
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    console.log(data["current"]["temp_c"]);
+                    temp = JSON.stringify(data["current"]["temp_c"]);
+                    var condi = JSON.stringify(data["current"]["condition"]["text"]);
+                    document.getElementById("testApiMeteo").innerText = "température : " +temp +"\n"
+                                                                    +"temps actuel : " +condi;
+                    
+
+                })
+                .catch(error => {
+                    console.error("Une erreur s'est produite lors de la requête API :", error);
+                });
+/*
+                fetch(url2)
+                .then(response => response.json())
+                .then(met => {
+                    console.log(met);
+                    met.forEach(element => {
+                        console.log(element["languages"][8]);
+                        tab.push(element["languages"][8]["day_text"]);
+                        console.log(tab);
+                    });
+                    
+                    })
+                .catch(error => {
+                    console.error("Une erreur s'est produite lors de la requête API :", error);
+                });
+
+*/
+
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYTI3Mjg5MmE0MGZmNzI0NzU1ZGJmZmY1NWQ5YWM0NyIsInN1YiI6IjYyMmY3N2ViYTZmZGFhMDA0NDRlMTY2NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ysDL1z9jCM48_Wg0FKbZdKih0IVl7FVIGPYCaVILxCk'
+                }
+            };
+            
+            fetch('https://api.themoviedb.org/3/genre/movie/list?language=fr-French', options)
+                .then(response => response.json())
+                .then(response => {console.log(response)
+                    console.log(response);
+                    var genre = JSON.stringify(response);
+                    document.getElementById("testApiGenre").innerText = genre;})
+                .catch(err => console.error(err));
+               var genres = [
+                   [28, "Action"], [12, "Adventure"], [16, "Animation"],
+                   [35, "Comedy"], [80, "Crime"], [99, "Documentary"],
+                   [18, "Drama"], [10751, "Family"], [14, "Fantasy"],
+                   [36, "History"], [27, "Horror"], [10402, "Music"],
+                   [9648, "Mystery"], [10749, "Romance"], [878, "Science Fiction"],
+                   [10770, "TV Movie"], [53, "Thriller"], [10752, "War"], [37, "Western"]
+                ];
+console.log(genres);
+
+
+
+
+                // var genre = JSON.stringify(response);
+                // document.getElementById("testApiFilm").innerText = genre;
+
+
+                var $humeur = humor[0]
+
+                if ($humeur == "Happy") {
+                    var $test = 12;
+                    
+                }
+
+                const options2 = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYTI3Mjg5MmE0MGZmNzI0NzU1ZGJmZmY1NWQ5YWM0NyIsInN1YiI6IjYyMmY3N2ViYTZmZGFhMDA0NDRlMTY2NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ysDL1z9jCM48_Wg0FKbZdKih0IVl7FVIGPYCaVILxCk'
+  }
+};
+
+fetch("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr-French&page=1&sort_by=popularity.desc&with_genres="+$test, options2)
+  .then(response => response.json())
+  .then(response => {console.log(response)
+                    var films = JSON.stringify(response);
+                    document.getElementById("testApiFilm").innerText = films;})
+.catch(err => console.error(err));
+        </script>
+
+        
+
+    </body>
+</html>
