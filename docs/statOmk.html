@@ -43,12 +43,12 @@
       import { auth } from "./modules/auth.js"; // authentification API omeka
       import { pa } from "./modules/authParams.js"; // paramètres d'authentification
       /*
-            let urlEtu =
-                "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKaeTMzC3pzvVgSUs6pnN0fS5tckz-x2SsHw4Uj0-0YXr7MQ5VEC0voCVPhi5-Mdv9Xz-oczoRyDc4/pub?output=csv",
-              urlProj =
-                "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7ig4_uHNJuq1cHL9_34G-Z47uIKSyeM0Lyiw05V4hFzjcOL4tLEEKBIM7Az_bwJpdIXkPKsCC7IAC/pub?gid=1915481990&single=true&output=csv",
+                  let urlEtu =
+                      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKaeTMzC3pzvVgSUs6pnN0fS5tckz-x2SsHw4Uj0-0YXr7MQ5VEC0voCVPhi5-Mdv9Xz-oczoRyDc4/pub?output=csv",
+                    urlProj =
+                      "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7ig4_uHNJuq1cHL9_34G-Z47uIKSyeM0Lyiw05V4hFzjcOL4tLEEKBIM7Az_bwJpdIXkPKsCC7IAC/pub?gid=1915481990&single=true&output=csv",
 
-      */
+            */
 
       // authentification....
       let a = new auth(pa);
@@ -58,8 +58,8 @@
       });
 
       /*
-        TEST API omeka
-      */
+              TEST API omeka
+            */
       console.log("GET instance omk", a.omk);
       // GET
       console.log("GET ALL items", a.omk.getAllItems());
@@ -83,27 +83,27 @@
       // POST
 
       let firstItem = a.omk.getItem(1);
+      /*
+            a.omk.createRessource(
+              {
+                "o:title": "Titre de l'item",
+                "o:description": "Description de l'item",
+              },
 
-      a.omk.createRessource(
-        {
-          "o:title": "Titre de l'item",
-          "o:description": "Description de l'item",
-        },
-
-        // callback
-        (response) => {
-          console.log("Réponse de la création de l'item :", response);
-          /*
-          if (response && response.status === "success") {
-            console.log("L'item a été inséré avec succès.");
-          } else {
-            console.error("Erreur lors de l'insertion de l'item :", response);
-          }
-          */
-        },
-        "items"
-      );
-
+              // callback
+              (response) => {
+                console.log("Réponse de la création de l'item :", response);
+                /*
+                if (response && response.status === "success") {
+                  console.log("L'item a été inséré avec succès.");
+                } else {
+                  console.error("Erreur lors de l'insertion de l'item :", response);
+                }
+                
+              },
+              "items"
+            );
+      */
       let apiEndPoints = ["items", "vocabularies", "resource_templates"];
 
       const apiLinksSection = d3.select("#api-links-section");
