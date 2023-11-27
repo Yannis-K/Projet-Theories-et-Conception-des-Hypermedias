@@ -1,0 +1,71 @@
+{
+    "o:label": "user_form_logs",
+    "o:resource_template_property": [
+        {
+            "o:alternate_label": null,
+            "o:alternate_comment": null,
+            "o:is_required": false,
+            "o:is_private": false,
+            "o:default_lang": null,
+            "data_types": [],
+            "vocabulary_namespace_uri": "https:\/\/movie2.univ-paris8.fr\/onto\/mov2#",
+            "vocabulary_label": "movie2",
+            "local_name": "user_id",
+            "label": "user_id"
+        },
+        {
+            "o:alternate_label": null,
+            "o:alternate_comment": null,
+            "o:is_required": false,
+            "o:is_private": false,
+            "o:default_lang": null,
+            "data_types": [],
+            "vocabulary_namespace_uri": "https:\/\/movie2.univ-paris8.fr\/onto\/mov2#",
+            "vocabulary_label": "movie2",
+            "local_name": "submission_date",
+            "label": "submission_date"
+        },
+        {
+            "o:alternate_label": null,
+            "o:alternate_comment": null,
+            "o:is_required": false,
+            "o:is_private": false,
+            "o:default_lang": null,
+            "data_types": [],
+            "vocabulary_namespace_uri": "https:\/\/movie2.univ-paris8.fr\/onto\/mov2#",
+            "vocabulary_label": "movie2",
+            "local_name": "humor",
+            "label": "humor"
+        },
+        {
+            "o:alternate_label": null,
+            "o:alternate_comment": null,
+            "o:is_required": false,
+            "o:is_private": false,
+            "o:default_lang": null,
+            "data_types": [],
+            "vocabulary_namespace_uri": "https:\/\/movie2.univ-paris8.fr\/onto\/mov2#",
+            "vocabulary_label": "movie2",
+            "local_name": "location",
+            "label": "location"
+        },
+        {
+            "o:alternate_label": null,
+            "o:alternate_comment": null,
+            "o:is_required": false,
+            "o:is_private": false,
+            "o:default_lang": null,
+            "data_types": [],
+            "vocabulary_namespace_uri": "https:\/\/movie2.univ-paris8.fr\/onto\/mov2#",
+            "vocabulary_label": "movie2",
+            "local_name": "weather",
+            "label": "weather"
+        }
+    ],
+    "o:resource_class": {
+        "vocabulary_namespace_uri": "https:\/\/movie2.univ-paris8.fr\/onto\/mov2#",
+        "vocabulary_label": "movie2",
+        "local_name": "user_form_logs",
+        "label": "user_form_logs"
+    }
+}
