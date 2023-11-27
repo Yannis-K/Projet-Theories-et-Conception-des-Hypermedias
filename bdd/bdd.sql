@@ -29,10 +29,10 @@ CREATE TABLE `API_ref` (
 CREATE TABLE `user_recommendation_form_logs` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `user_id` int NOT NULL,
-  `user_humor` enum,
+  `user_humor` varchar(50),
   `user_location_lat` DECIMAL(10, 8),
   `user_location_long` DECIMAL(11, 8),
-  `user_location_weather_label` enum,
+  `user_location_weather_label` varchar(50),
   `user_location_weather_temperature` int,
   `form_submission_date` datetime
 );
@@ -51,4 +51,8 @@ ALTER TABLE `user_recommendation_form_logs` ADD FOREIGN KEY (`user_id`) REFERENC
 
 ALTER TABLE `user_recommendation_history` ADD FOREIGN KEY (`form_log_id`) REFERENCES `user_recommendation_form_logs` (`id`);
 
+<<<<<<< Updated upstream
 ALTER TABLE `user_recommendation_history` ADD FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`);
+=======
+ALTER TABLE `user_recommendation_history` ADD FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`);
+>>>>>>> Stashed changes
