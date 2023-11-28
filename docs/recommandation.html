@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recommandation page</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="home-page">
+      <div class="center-screen">
+        <div class="container mb-2">
+          <h1 class="mb-5">Comment vous sentez vous ?</h1>
+          <p id="emo" class="mb-5"></p>
+        </div>
+        <div class="button-container container">
+          <button
+            id="Content"
+            class="btn white-custom-btn width-min-150 mood-button"
+          >
+            Content
+          </button>
+          <button
+            id="Neutre"
+            class="btn white-custom-btn width-min-150 mood-button"
+          >
+            Neutre
+          </button>
+          <button
+            id="Triste"
+            class="btn white-custom-btn width-min-150 mood-button"
+          >
+            Triste
+          </button>
+
+          <div class="container mb-2">
+            <h1 class="mb-5">Météo et Localisation</h1>
+            <p id="loc" class="mb-5"></p>
+            <p id="temp" class="mb-5"></p>
+          </div>
+          <button id="valider" class="btn orange-custom-btn width-min-150 me-3">
+            Valider
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function findWeather(cond) {
+      if (cond == "Ensoleillé") {
+        return "Ensoleillé";
+      } else if (
+        cond == "Partiellement nuageux" ||
+        cond == "Nuageux" ||
+        cond == "Couvert"
+      ) {
+        return "Nuageux";
+      } else if (
+        cond == "Brouillard" ||
+        cond == "Brouillard givrant" ||
+        cond == "Brume"
+      ) {
+        return "Brouillard";
+      } /*else if(cond == "" || 
+                cond == "Averses de neige modérées à fortes" ||
+                cond == "Neige éparse à proximité" ||
+                cond == "Grésil épars à proximité" ||
+                cond == "Légères averses de neige" ||
+                cond == "Légères averses de grésil" ||
+                cond == "Averses de grésil modérées à fortes" ||
+                cond == "Crystaux de glace" ||
+                cond == "Légères averses de crystaux de glace" ||
+                cond == "Neige forte" ||
+                cond == "Neige forte éparse" ||
+                cond == "Neige modérée" ||
+                cond == "Neige modérée éparse" ||
+                cond == "Neige légère" ||
+                cond == "Grésil modéré à fort" ||
+                cond == "Léger grésil" || 
+                cond == "Neige légère éparse" ||
+                cond == "Forte bruine verglaçante" ||
+                cond == "Bruine verglaçante" ||
+                cond == "Bruine légère éparse" ||
+                cond == "Rafales de neige" ||
+                cond == "Blizzard" ||
+                cond == ""){
+                    return "Neige";
+                 }*/ else if (
+        cond == "Neige éparse modérée à forte avec tonnerre par endroit" ||
+        cond == "Légère neige éparse avec tonnerre par endroit" ||
+        cond == "Pluie forte à modérée avec tonerre par endroit" ||
+        cond == "Légère pluie éparse avec tonnerre par endroit" ||
+        cond == "Foyers orageux à proximité"
+      ) {
+        return "Tonerre";
+      } else if (
+        cond == "Bruine verglaçante éparse à proximité" ||
+        cond == "Pluie éparse à proximité" ||
+        cond == "Averses de crystaux de glace modérées à fortes" ||
+        cond == "Averse de pluie modérée" ||
+        cond == "Averses de pluie torrentielle" ||
+        cond == "Averse de pluie légère" ||
+        cond == "Pluie verglaçante modérée à forte" ||
+        cond == "Pluie verglaçante légère" ||
+        cond == "Pluie forte" ||
+        cond == "Pluie forte par moments" ||
+        cond == "Pluie modérée" ||
+        cond == "Pluie modérée par moments" ||
+        cond == "Pluie légère" ||
+        cond == "Pluie légère éparse" ||
+        cond == ""
+      ) {
+        return "Pluie";
+      }
+      return "Neige";
+    }
+
+    function findGenre(condition, temperature, humor) {
+      condi = findWeather(condition);
+      console.log(condi);
+      if (condi == "Ensoleillé" && humor == "Content") {
+        if (temperature <= 17) {
+          return "35"; // Comédie
+        }
+        return "10402"; // Musique
+      } else if (condi == "Ensoleillé" && humor == "Neutre") {
+        return "16"; //Animation
+      } else if (condi == "Ensoleillé" && humor == "Triste") {
+        return "99"; //Documentaire
+      } else if (condi == "Nuageux" && humor == "Content") {
+        return "53"; //Thriller
+      } else if (condi == "Nuageux" && humor == "Neutre") {
+        return "10770"; //Téléfilm
+      } else if (condi == "Nuageux" && humor == "Triste") {
+        return "37"; //Western
+      } else if (condi == "Brouillard" && humor == "Content") {
+        return "12"; //Aventure
+      } else if (condi == "Brouillard" && humor == "Neutre") {
+        return "878"; //Science-Fiction
+      } else if (condi == "Brouillard" && humor == "Triste") {
+        return "9648"; //Mystère
+      } else if (condi == "Pluie" && humor == "Content") {
+        return "10749"; //Romance
+      } else if (condi == "Pluie" && humor == "Neutre") {
+        return "28"; //Action
+      } else if (condi == "Pluie" && humor == "Triste") {
+        return "18"; //Drame
+      } else if (condi == "Tonerre" && humor == "Content") {
+        return "27"; //Horreur
+      } else if (condi == "Tonerre" && humor == "Neutre") {
+        return "80"; //Crime
+      } else if (condi == "Tonerre" && humor == "Triste") {
+        return "10752"; //Guerre
+      } else if (condi == "Neige" && humor == "Content") {
+        return "10751"; //Familial
+      } else if (condi == "Neige" && humor == "Neutre") {
+        return "14"; //Fantastique
+      } else if (condi == "Neige" && humor == "Triste") {
+        return "36"; //Histoire
+      }
+    }
+
+    //Météo
+    var genre;
+    const apiKey = "3fe7f373b7d84791879114239232011";
+    var loc = "48.945838, 2.362363";
+    const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${loc}&aqi=no&lang=fr`;
+    let condition;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        console.log(data["current"]["temp_c"] + "°C");
+        temp = data["current"]["temp_c"]; //température
+        console.log(data["current"]["condition"]["text"]);
+        condition = data["current"]["condition"]["text"]; //condition
+        console.log(data["location"]["name"]);
+        loc = data["location"]["name"]; //localisation
+        document.getElementById("loc").textContent =
+          "Vous êtes actuellement à " + loc + ".";
+        document.getElementById("temp").textContent =
+          "Et il fait " + temp + "°C avec un temps " + condition + ".";
+      })
+      .catch((error) => {
+        console.error(
+          "Une erreur s'est produite lors de la requête API :",
+          error
+        );
+      });
+
+    var buttons = document.querySelectorAll(".button-container .mood-button");
+
+    var humor = "";
+    buttons.forEach((button) => {
+      button.addEventListener("click", function () {
+        humor = this.id;
+        console.log("Bouton d'humeur cliqué ID:", humor);
+        document.getElementById("emo").textContent = "Vous êtes " + humor + ".";
+      });
+    });
+
+    document.getElementById("valider").addEventListener("click", function () {
+      console.log(
+        "Valider cliqué. Condition:",
+        condition,
+        "Température:",
+        temp,
+        "Humeur:",
+        humor
+      );
+
+      genre = findGenre(condition, temp, humor);
+      console.log("Genre déterminé:", genre);
+
+      if (genre != null) {
+        var url = "recommandation2.html?genre=" + encodeURIComponent(genre);
+        window.location.href = url;
+      } else {
+        console.log("Genre n'est pas défini après l'appel de findGenre.");
+      }
+    });
+  </script>
+</html>

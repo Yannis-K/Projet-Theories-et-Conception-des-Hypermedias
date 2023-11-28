@@ -83,27 +83,27 @@
       // POST
 
       let firstItem = a.omk.getItem(1);
-      /*
-            a.omk.createRessource(
-              {
-                "o:title": "Titre de l'item",
-                "o:description": "Description de l'item",
-              },
 
-              // callback
-              (response) => {
-                console.log("Réponse de la création de l'item :", response);
-                /*
-                if (response && response.status === "success") {
-                  console.log("L'item a été inséré avec succès.");
-                } else {
-                  console.error("Erreur lors de l'insertion de l'item :", response);
-                }
-                
-              },
-              "items"
-            );
-      */
+      a.omk.createRessource(
+        // data
+        {
+          "o:title": "Titre de l'item",
+          "o:description": "Description de l'item",
+        },
+
+        // callback
+        (response) => {
+          console.log("Réponse de la création de l'item :", response);
+
+          if (response && response.status === "success") {
+            console.log("L'item a été inséré avec succès.");
+          } else {
+            console.error("Erreur lors de l'insertion de l'item :", response);
+          }
+        },
+        "items"
+      );
+
       let apiEndPoints = ["items", "vocabularies", "resource_templates"];
 
       const apiLinksSection = d3.select("#api-links-section");

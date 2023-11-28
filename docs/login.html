@@ -16,7 +16,6 @@
   </head>
   <body>
     <div class="center-screen login-page">
-      <!-- Your content goes here -->
       <div class="container mb-2">
         <h1 class="mb-5">Connexion</h1>
         <form class="mb-5">
@@ -68,7 +67,14 @@
         dataType: "json",
         data: { username: username, password: password },
         success: function (data) {
-          $("#result").html("Data from the server: " + JSON.stringify(data));
+          console.log(data);
+          if (data.success === true) {
+            // alert
+            alert("Connexion réussi");
+            window.location.href = "dashboard.php";
+          } else {
+            alert("Connexion échouée");
+          }
         },
         error: function (xhr, status, error) {
           console.error("Error: " + status, error);
