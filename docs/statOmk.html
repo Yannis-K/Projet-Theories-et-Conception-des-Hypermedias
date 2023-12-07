@@ -25,6 +25,7 @@
   <body>
     <nav id="navbarMain" class="navbar navbar-expand-lg bg-body-tertiary"></nav>
 
+    <div class="rt-div"></div>
     <div class="container">
       <div id="infosProjet" class="row"></div>
       <div id="cardEtus" class="row row-cols-1 row-cols-md-3 g-4">
@@ -43,12 +44,12 @@
       import { auth } from "./modules/auth.js"; // authentification API omeka
       import { pa } from "./modules/authParams.js"; // paramètres d'authentification
       /*
-                  let urlEtu =
-                      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKaeTMzC3pzvVgSUs6pnN0fS5tckz-x2SsHw4Uj0-0YXr7MQ5VEC0voCVPhi5-Mdv9Xz-oczoRyDc4/pub?output=csv",
-                    urlProj =
-                      "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7ig4_uHNJuq1cHL9_34G-Z47uIKSyeM0Lyiw05V4hFzjcOL4tLEEKBIM7Az_bwJpdIXkPKsCC7IAC/pub?gid=1915481990&single=true&output=csv",
+                        let urlEtu =
+                            "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKaeTMzC3pzvVgSUs6pnN0fS5tckz-x2SsHw4Uj0-0YXr7MQ5VEC0voCVPhi5-Mdv9Xz-oczoRyDc4/pub?output=csv",
+                          urlProj =
+                            "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7ig4_uHNJuq1cHL9_34G-Z47uIKSyeM0Lyiw05V4hFzjcOL4tLEEKBIM7Az_bwJpdIXkPKsCC7IAC/pub?gid=1915481990&single=true&output=csv",
 
-            */
+                  */
 
       // authentification....
       let a = new auth(pa);
@@ -58,8 +59,8 @@
       });
 
       /*
-              TEST API omeka
-            */
+                    TEST API omeka
+                  */
       console.log("GET instance omk", a.omk);
       // GET
       console.log("GET ALL items", a.omk.getAllItems());
@@ -68,6 +69,7 @@
       console.log("Ressources templates", a.omk.rts);
       console.log("GET RT ID by label", a.omk.getRtId("Base Resource"));
       a.omk.getProps();
+      console.log("GET vocabs", a.omk.vocabs);
       console.log("GET props", a.omk.props);
       console.log("GET props by ID", a.omk.getPropId("dcterms:contributor"));
       a.omk.getClass();
@@ -83,27 +85,11 @@
       // POST
 
       let firstItem = a.omk.getItem(1);
+      // Assuming 'a' is your instance of the 'omk' class
+
+      // Sample data for creating an item
+      let itemData = a.omk.getItem(1);
       /*
-      a.omk.createRessource(
-        // data
-        {
-          "o:title": "Titre de l'item",
-          "o:description": "Description de l'item",
-        },
-
-        // callback
-        (response) => {
-          console.log("Réponse de la création de l'item :", response);
-
-          if (response && response.status === "success") {
-            console.log("L'item a été inséré avec succès.");
-          } else {
-            console.error("Erreur lors de l'insertion de l'item :", response);
-          }
-        },
-        "items"
-      );
-*/
       let apiEndPoints = ["items", "vocabularies", "resource_templates"];
 
       const apiLinksSection = d3.select("#api-links-section");
@@ -147,6 +133,68 @@
             error
           )
         );
+*/
+      // d --> ressource template
+      function putAleaData(myOmk, rtData) {
+        console.log("Les propriétés initialisées : ");
+        //console.log("AAAAAAAAAA", rtData);
+        let aleaData = {},
+          propsRt = [];
+        // parcourrir l'ensemble des proprietes
+        rtData["o:resource_template_property"].forEach((p) => {
+          //console.log("NNNNNNNNNN", p["o:property"]["o:id"]);
+          // https://site.test/omeka-s/api/properties/197
+          //console.log("PPPPPPPPPPPPPPPPPPP111111111", myOmk.props);
+          //console.log("PPPPPPPPPPPPPPPPPPP", myOmk.getPropTerm(197));
+          let prop = myOmk.getPropTerm(p["o:property"]["o:id"]);
+          //let prop = myOmk.getPropTerm(1);
+
+          console.log(prop);
+
+          // init la prop courant
+          aleaData[prop] = "TOTO";
+        });
+
+        let item = myOmk.createRessource(aleaData);
+      }
+
+      function displayRT(myOmk) {
+        const resourceDiv = d3.select(".rt-div");
+        resourceDiv.append("h4").text("Resources templates");
+        myOmk.getRT((u) => {
+          let ulRT = resourceDiv.append("ul");
+
+          // Utiliser une classe pour styliser les éléments li
+          let liRT = ulRT
+            .selectAll("li")
+            .data(u)
+            .enter()
+            .append("li")
+            .attr("class", "resource-item"); // Ajouter une classe pour styliser les éléments li
+
+          liRT
+            .append("a")
+            .attr("href", (d) => d["@id"])
+            .attr("target", "_blank")
+            .text((d) => d["o:label"]);
+
+          // Utiliser une classe pour styliser les boutons
+          liRT
+            .append("button")
+            .attr("type", "button")
+            .attr("class", "btn btn-danger mx-3 resource-button") // Ajouter une classe pour styliser les boutons
+            .html('<i class="bi bi-shuffle"></i>')
+            .on("click", function (d) {
+              const currentU = d3.select(this.parentNode).datum(); // Accéder à l'objet u associé au bouton courant
+              putAleaData(myOmk, currentU);
+            });
+        });
+      }
+
+      a.omk.getProps();
+      displayRT(a.omk);
     </script>
+
+    <script></script>
   </body>
 </html>
