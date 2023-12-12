@@ -19,12 +19,12 @@ mov2:username a rdf:Property ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
-
-
 mov2:password a rdf:Property ;
     rdfs:label "password" ;
     rdfs:domain o:Resource ;
-    vs:term_status "experimental" .   
+    vs:term_status "experimental" .  
+
+
 
 mov2:user_movie_relation a rdfs:Class ;
     rdfs:label "user_movie_relation" ;
@@ -51,8 +51,26 @@ mov2:favourite a rdf:Property ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov2:user_form_logs a rdfs:Class ;
-    rdfs:label "user_form_logs" ;
+mov2:rating_timestamp a rdf:Property ;
+    rdfs:label "rating_timestamp" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov2:favourite_timestamp a rdf:Property ;
+    rdfs:label "favourite_timestamp" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov2:created_at a rdf:Property ;
+    rdfs:label "created_at" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+
+
+
+mov2:user_recommendation_form_logs a rdfs:Class ;
+    rdfs:label "user_recommendation_form_logs" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" .
 
@@ -61,25 +79,38 @@ mov2:user_id a rdf:Property ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov2:submission_date a rdf:Property ;
-    rdfs:label "submission_date" ;
+
+mov2:user_humor a rdf:Property ;
+    rdfs:label "user_humor" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov2:humor a rdf:Property ;
-    rdfs:label "humor" ;
+mov2:user_location_lat a rdf:Property ;
+    rdfs:label "user_location_lat" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov2:location a rdf:Property ;
-    rdfs:label "location" ;
+mov2:user_location_long a rdf:Property ;
+    rdfs:label "user_location_long" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
 
-mov2:weather a rdf:Property ;
-    rdfs:label "weather" ;
+mov2:user_location_weather_label a rdf:Property ;
+    rdfs:label "user_location_weather_label" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
+
+mov2:user_location_weather_temperature a rdf:Property ;
+    rdfs:label "user_location_weather_temperature" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov2:form_submission_date a rdf:Property ;
+    rdfs:label "form_submission_date" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+
 
 mov2:API_ref a rdfs:Class ;
     rdfs:label "Api_ref" ;
@@ -95,3 +126,47 @@ mov2:label a rdf:Property ;
     rdfs:label "label" ;
     rdfs:domain o:Resource ;
     vs:term_status "experimental" . 
+
+
+mov2:user_recommendation_history a rdfs:Class ;
+    rdfs:label "user_recommendation_history" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov2:form_log_id a rdf:Property ;
+    rdfs:label "form_log_id" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" . 
+
+mov2:movie_id a rdf:Property ;
+    rdfs:label "movie_id" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov2:movie a rdfs:Class ;
+    rdfs:label "movie" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov2:title a rdf:Property ;
+    rdfs:label "title" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov2:description a rdf:Property ;
+    rdfs:label "description" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov2:movie_is_form_API a rdf:Property ;
+    rdfs:label "movie_is_form_API" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+mov2:id_API a rdf:Property ;
+    rdfs:label "id_API" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+
+
