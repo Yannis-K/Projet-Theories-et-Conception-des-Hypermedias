@@ -41,7 +41,7 @@ Application web qui permet la recommendation de films à partir de l'humeur de l
 
 - **Laurent** : Ce projet a été l'occasion pour moi de mettre en pratique mes compétences dans le développement web. Malgré des contraintes de temps et de disponibilité, nous avons réussi à concrétiser notre idée initiale et à obtenir une première version viable de l'application. À l'avenir, il serait nécessaire de retravailler le frontend de l'application pour une utilisation plus conviviale et d'ajouter des fonctionnalités telles que des graphiques ou un système de filtrage.
 
-- **Yannis** :
+- **Yannis** : Ce projet m'a permis de comprendre plusieurs choses, sur moi ainsi que sur un environnement de travail en groupe. En effet pour savoir vers quelle voie nous souhaitons nous diriger il faut y réfléchir en avance, car si on n'y parviens pas il sera facile de se perdre. Nous en avons fais l'experience, mais malgrès tout nous avons réussi à acomplir nos objectif. 
 
 ## Présentation
 - `/presentation.pdf`
