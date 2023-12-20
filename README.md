@@ -41,7 +41,11 @@ Application web qui permet la recommendation de films à partir de l'humeur de l
 
 - **Laurent** : Ce projet a été l'occasion pour moi de mettre en pratique mes compétences dans le développement web. Malgré des contraintes de temps et de disponibilité, nous avons réussi à concrétiser notre idée initiale et à obtenir une première version viable de l'application. À l'avenir, il serait nécessaire de retravailler le frontend de l'application pour une utilisation plus conviviale et d'ajouter des fonctionnalités telles que des graphiques ou un système de filtrage.
 
-- **Yannis** : 
+- **Yannis** :
+
+## Présentation
+- `/presentation.pdf`
+- https://docs.google.com/presentation/d/1sdu-QT4z0ChLTU-0LIOBb2XxtSc4zprh8r3DujkBv2Y/edit?usp=sharing
 
 ## Autre
 
